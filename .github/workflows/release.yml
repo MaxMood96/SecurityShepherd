@@ -28,7 +28,7 @@ jobs:
       - name: Build Maven with Docker Profile and Generate SBOM
         run: mvn clean install -Pdocker -DskipTests -B -DexcludeTestProject=true cyclonedx:makeBom
       - name: Upload WAR File
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: security_shepherd_war
           path: target/*.war
@@ -56,7 +56,7 @@ jobs:
           image: owasp/security-shepherd_mongo
           output-file: ${{ github.workspace }}/target/owasp-security-shepherd-mongodb.cyclonedx.json
       - name: Upload SBOMs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: security_shepherd_sboms
           path: |
